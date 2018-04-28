@@ -8,6 +8,7 @@
 
 #include "chainparams.h"
 #include "consensus/merkle.h"
+#include "arith_uint256.h"
 
 #include "tinyformat.h"
 #include "util.h"
@@ -53,7 +54,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Wired 09/Jan/2014 The Grand Experiment Goes Live: Overstock.com Is Now Accepting Bitcoins";
+    const char* pszTimestamp = "testgen 29042018";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -141,15 +142,14 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        uint256 temphash;
+        // how to create genesis on 0.12 for all you cloners
         uint32_t tempnonce = 0;
-        while (true) {
+        while (UintToArith256(genesis.GetHash()) > UintToArith256(consensus.powLimit)) {
           tempnonce++;
-          genesis = CreateGenesisBlock(1390095618, tempnonce, 0x1e0ffff0, 1, 50 * COIN);
-          temphash = genesis.GetHash();
-          if (temphash < consensus.powLimit) break;
-          if (tempnonce % 4096 == 0) { printf(" nonce %8X %s\n", tempnonce, temphash.ToString().c_str()); }
+          genesis = CreateGenesisBlock(1524940000, tempnonce, 0x1e0ffff0, 1, 0 * COIN);
+          if (tempnonce % 16384 == 0) { printf(" nonce %08X \n", tempnonce); }
         }
+        printf("nonce is %d \n", tempnonce);
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
