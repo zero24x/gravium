@@ -9,10 +9,12 @@
 #include "tinyformat.h"
 #include "utilstrencodings.h"
 #include "crypto/common.h"
+#include "crypto/x16r.h"
 
 uint256 CBlockHeader::GetHash() const
 {
-    return HashX11(BEGIN(nVersion), END(nNonce));
+    //return HashX11(BEGIN(nVersion), END(nNonce));
+    x16r_hash(BEGIN(nVersion), END(nNonce), 80);
 }
 
 std::string CBlock::ToString() const
