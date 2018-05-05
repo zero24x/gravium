@@ -1,6 +1,6 @@
 [Protocol]
-exec=dash-qt '%u'
-protocol=dash
+exec=gravium-qt '%u'
+protocol=gravium
 input=none
 output=none
 helper=true
