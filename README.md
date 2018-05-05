@@ -1,10 +1,9 @@
 Gravium Core staging tree 0.12.2
 ===============================
 
-`master:` [![Build Status](https://travis-ci.org/graviumpay/gravium.svg?branch=master)](https://travis-ci.org/graviumpay/gravium) `develop:` [![Build Status](https://travis-ci.org/graviumpay/gravium.svg?branch=develop)](https://travis-ci.org/graviumpay/gravium/branches)
+`master:` [![Build Status](https://travis-ci.org/altcoin-forge/gravium.svg?branch=master)](https://travis-ci.org/altcoin-forge/gravium) `develop:` [![Build Status](https://travis-ci.org/altcoin-forge/gravium.svg?branch=develop)](https://travis-ci.org/altcoin-forge/gravium/branches)
 
-https://www.gravium.org
-
+https://gravium.io/
 
 What is Gravium?
 ----------------
