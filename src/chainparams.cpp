@@ -54,8 +54,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Gravium MAINNET 29042018";
-    const CScript genesisOutputScript = CScript() << ParseHex("1429B9041656F9E0255E66F2AA380F5BEF56FA75E63DF24FE4159A15DA35D8FB") << OP_CHECKSIG;
+    const char* pszTimestamp = "Gravium MAINNET 29042018 - 1429B9041656F9E0255E66F2AA380F5BEF56FA75E63DF24FE4159A15DA35D8FB";
+    const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -139,11 +139,11 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1524940000, 167116, 0x1e0ffff0, 1, 0 * COIN);
+        genesis = CreateGenesisBlock(1524940000, 950369, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("0x000004e5f511b7966fddbcc0841e9587ff496b5efa0faa002bd8618ecf70563b"));
-        assert(genesis.hashMerkleRoot == uint256S("0x035a626388f72b555d28230dd2beb56f969c3b6e10415acea34e99f93f5f20f8"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000eeaea534b8755f38b087db2cf7751b0ba1d8620e9ed0938d94874f18f81"));
+        assert(genesis.hashMerkleRoot == uint256S("0xd68170816e7600b88888c7b5f4b44e3bdb8b4455ed8e67167597216eefe42517"));
 
         //vSeeds.push_back(CDNSSeedData("", ""));
 
