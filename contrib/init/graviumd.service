@@ -1,0 +1,22 @@
+[Unit]
+Description=Gravium's distributed currency daemon
+After=network.target
+
+[Service]
+User=graviumcore
+Group=graviumcore
+
+Type=forking
+PIDFile=/var/lib/graviumd/graviumd.pid
+ExecStart=/usr/bin/graviumd -daemon -pid=/var/lib/graviumd/graviumd.pid \
+-conf=/etc/graviumcore/gravium.conf -datadir=/var/lib/graviumd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

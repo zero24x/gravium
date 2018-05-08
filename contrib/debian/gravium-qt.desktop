@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Gravium
+Comment=Gravium P2P Cryptocurrency
+Comment[fr]=Gravium, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Gravium, eşten eşe kriptografik sanal para birimi
+Exec=gravium-qt %u
+Terminal=false
+Type=Application
+Icon=gravium128
+MimeType=x-scheme-handler/gravium;
+Categories=Office;Finance;

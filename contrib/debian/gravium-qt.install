@@ -1,0 +1,6 @@
+usr/local/bin/gravium-qt usr/bin
+share/pixmaps/gravium32.xpm usr/share/pixmaps
+share/pixmaps/gravium16.xpm usr/share/pixmaps
+share/pixmaps/gravium128.png usr/share/pixmaps
+debian/gravium-qt.desktop usr/share/applications
+debian/gravium-qt.protocol usr/share/kde4/services/

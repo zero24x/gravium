@@ -123,7 +123,7 @@ public:
 };
 
 /**
- * Dash RPC command dispatcher.
+ * Gravium RPC command dispatcher.
  */
 class CRPCTable
 {

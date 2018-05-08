@@ -1,0 +1,3 @@
+debian/manpages/graviumd.1
+debian/manpages/gravium.conf.5
+debian/manpages/gravium-cli.1

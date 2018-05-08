@@ -1,11 +1,11 @@
 Sample configuration files for:
 
-SystemD: dashd.service
-Upstart: dashd.conf
-OpenRC:  dashd.openrc
-         dashd.openrcconf
-CentOS:  dashd.init
-OS X:    org.dash.dashd.plist
+SystemD: graviumd.service
+Upstart: graviumd.conf
+OpenRC:  graviumd.openrc
+         graviumd.openrcconf
+CentOS:  graviumd.init
+OS X:    org.gravium.graviumd.plist
 
 have been made available to assist packagers in creating node packages here.
 
