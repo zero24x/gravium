@@ -141,6 +141,7 @@ share/BitcoindComparisonTool.jar
 .cproject
 .project
 .autotools
+.vscode
 /doc/doxygen/
 
 libgraviumconsensus.pc
