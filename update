@@ -1,0 +1,3 @@
+#!/bin/bash
+make
+./src/qt/gravium-qt
