@@ -182,13 +182,13 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the gravium.org server
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the gravium.io server
 
-- Update gravium.org
+- Update gravium.io
 
 - Announce the release:
 
-  - Release on Gravium forum: https://www.gravium.org/forum/topic/official-announcements.54/
+  - Release on Gravium forum: https://www.gravium.io/forum/topic/official-announcements.54/
 
   - Gravium-development mailing list
 
@@ -196,7 +196,7 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
   - Optionally reddit /r/Graviumpay, ... but this will usually sort out itself
 
-- Notify flare so that he can start building [the PPAs](https://launchpad.net/~gravium.org/+archive/ubuntu/gravium)
+- Notify flare so that he can start building [the PPAs](https://launchpad.net/~gravium.io/+archive/ubuntu/gravium)
 
 - Add release notes for the new version to the directory `doc/release-notes` in git master
 
