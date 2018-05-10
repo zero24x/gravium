@@ -92,6 +92,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     }
     
     /* Theme selector */
+    ui->theme->addItem(QString("GRAVIUM-dark"), QVariant("gravium-dark"));
     ui->theme->addItem(QString("GRAVIUM-original"), QVariant("drkblue"));
     ui->theme->addItem(QString("GRAVIUM-traditional"), QVariant("trad"));
     

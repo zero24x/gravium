@@ -230,6 +230,64 @@ RES_ICONS = \
   qt/res/icons/drkblue/fontsmaller.png \
   qt/res/icons/drkblue/transaction_abandoned.png \
   qt/res/icons/drkblue/network_disabled.png \
+  qt/res/icons/gravium-dark/add.png \
+  qt/res/icons/gravium-dark/address-book.png \
+  qt/res/icons/gravium-dark/address-book-white.png \
+  qt/res/icons/gravium-dark/folder-icon.png \
+  qt/res/icons/gravium-dark/info.png \
+  qt/res/icons/gravium-dark/browse.png \
+  qt/res/icons/gravium-dark/clock1.png \
+  qt/res/icons/gravium-dark/clock2.png \
+  qt/res/icons/gravium-dark/clock3.png \
+  qt/res/icons/gravium-dark/clock4.png \
+  qt/res/icons/gravium-dark/clock5.png \
+  qt/res/icons/gravium-dark/configure.png \
+  qt/res/icons/gravium-dark/connect0_16.png \
+  qt/res/icons/gravium-dark/connect1_16.png \
+  qt/res/icons/gravium-dark/connect2_16.png \
+  qt/res/icons/gravium-dark/connect3_16.png \
+  qt/res/icons/gravium-dark/connect4_16.png \
+  qt/res/icons/gravium-dark/debugwindow.png \
+  qt/res/icons/gravium-dark/drkblue_editpaste.png \
+  qt/res/icons/gravium-dark/drkblue_address-book.png \
+  qt/res/icons/gravium-dark/drkblue_editcopy.png \
+  qt/res/icons/gravium-dark/drkblue_remove.png \
+  qt/res/icons/gravium-dark/edit.png \
+  qt/res/icons/gravium-dark/edit2.png \
+  qt/res/icons/gravium-dark/editcopy.png \
+  qt/res/icons/gravium-dark/editpaste.png \
+  qt/res/icons/gravium-dark/export.png \
+  qt/res/icons/gravium-dark/eye.png \
+  qt/res/icons/gravium-dark/eye_minus.png \
+  qt/res/icons/gravium-dark/eye_plus.png \
+  qt/res/icons/gravium-dark/filesave.png \
+  qt/res/icons/gravium-dark/hd_disabled.png \
+  qt/res/icons/gravium-dark/hd_enabled.png \
+  qt/res/icons/gravium-dark/history.png \
+  qt/res/icons/gravium-dark/key.png \
+  qt/res/icons/gravium-dark/lock_closed.png \
+  qt/res/icons/gravium-dark/lock_open.png \
+  qt/res/icons/gravium-dark/masternodes.png \
+  qt/res/icons/gravium-dark/overview.png \
+  qt/res/icons/gravium-dark/quit.png \
+  qt/res/icons/gravium-dark/receive.png \
+  qt/res/icons/gravium-dark/remove.png \
+  qt/res/icons/gravium-dark/send.png \
+  qt/res/icons/gravium-dark/synced.png \
+  qt/res/icons/gravium-dark/transaction0.png \
+  qt/res/icons/gravium-dark/transaction2.png \
+  qt/res/icons/gravium-dark/transaction_conflicted.png \
+  qt/res/icons/gravium-dark/tx_inout.png \
+  qt/res/icons/gravium-dark/tx_input.png \
+  qt/res/icons/gravium-dark/tx_output.png \
+  qt/res/icons/gravium-dark/tx_mined.png \
+  qt/res/icons/gravium-dark/about.png \
+  qt/res/icons/gravium-dark/about_qt.png \
+  qt/res/icons/gravium-dark/verify.png \
+  qt/res/icons/gravium-dark/fontbigger.png \
+  qt/res/icons/gravium-dark/fontsmaller.png \
+  qt/res/icons/gravium-dark/transaction_abandoned.png \
+  qt/res/icons/gravium-dark/network_disabled.png \
   qt/res/icons/crownium/add.png \
   qt/res/icons/crownium/address-book.png \
   qt/res/icons/crownium/browse.png \
@@ -468,6 +526,19 @@ RES_IMAGES = \
   qt/res/images/drkblue/drkblue_rightArrow_small.png \
   qt/res/images/drkblue/drkblue_qtreeview_selected.png \
   qt/res/images/drkblue/drkblue_walletFrame_bg.png \
+  qt/res/images/gravium-dark/about.png \
+  qt/res/images/gravium-dark/splash.png \
+  qt/res/images/gravium-dark/splash_testnet.png \
+  qt/res/images/gravium-dark/gravium_logo_horizontal.png \
+  qt/res/images/gravium-dark/unchecked.png \
+  qt/res/images/gravium-dark/checked.png \
+  qt/res/images/gravium-dark/drkblue_downArrow.png \
+  qt/res/images/gravium-dark/drkblue_downArrow_small.png \
+  qt/res/images/gravium-dark/drkblue_upArrow_small.png \
+  qt/res/images/gravium-dark/drkblue_leftArrow_small.png \
+  qt/res/images/gravium-dark/drkblue_rightArrow_small.png \
+  qt/res/images/gravium-dark/drkblue_qtreeview_selected.png \
+  qt/res/images/gravium-dark/drkblue_walletFrame_bg.png \
   qt/res/images/crownium/about.png \
   qt/res/images/crownium/splash.png \
   qt/res/images/crownium/splash_testnet.png \
@@ -508,6 +579,7 @@ RES_IMAGES = \
 
 RES_CSS = \
   qt/res/css/drkblue.css \
+  qt/res/css/gravium-dark.css \
   qt/res/css/crownium.css \
   qt/res/css/light.css \
   qt/res/css/light-hires.css \
