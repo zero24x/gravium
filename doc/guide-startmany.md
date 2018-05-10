@@ -89,7 +89,7 @@ You can confirm that remote server is on the correct block by issuing
 
 ```gravium-cli getinfo```
 
-and comparing with the official explorer at https://explorer.gravium.org/chain/Gravium
+and comparing with the official explorer at https://explorer.gravium.io/chain/Gravium
 
 ### Local
 
