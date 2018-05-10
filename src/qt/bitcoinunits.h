@@ -60,7 +60,7 @@ public:
         GRV,
         mGRV,
         uGRV,
-        duffs
+        guffs
     };
 
     enum SeparatorStyle

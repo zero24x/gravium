@@ -93,6 +93,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     
     /* Theme selector */
     ui->theme->addItem(QString("GRAVIUM-original"), QVariant("drkblue"));
+    ui->theme->addItem(QString("GRAVIUM-traditional"), QVariant("trad"));
     
     /* Language selector */
     QDir translations(":translations");

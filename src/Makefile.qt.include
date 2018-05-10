@@ -174,6 +174,9 @@ RES_ICONS = \
   qt/res/icons/warning.png \
   qt/res/icons/drkblue/add.png \
   qt/res/icons/drkblue/address-book.png \
+  qt/res/icons/drkblue/address-book-white.png \
+  qt/res/icons/drkblue/folder-icon.png \
+  qt/res/icons/drkblue/info.png \
   qt/res/icons/drkblue/browse.png \
   qt/res/icons/drkblue/clock1.png \
   qt/res/icons/drkblue/clock2.png \
@@ -192,6 +195,7 @@ RES_ICONS = \
   qt/res/icons/drkblue/drkblue_editcopy.png \
   qt/res/icons/drkblue/drkblue_remove.png \
   qt/res/icons/drkblue/edit.png \
+  qt/res/icons/drkblue/edit2.png \
   qt/res/icons/drkblue/editcopy.png \
   qt/res/icons/drkblue/editpaste.png \
   qt/res/icons/drkblue/export.png \

@@ -5,7 +5,10 @@
         <file alias="warning">res/icons/warning.png</file>
     </qresource>
     <qresource prefix="/icons/drkblue">
+        <file alias="folder-icon">res/icons/drkblue/folder-icon.png</file>
+        <file alias="info">res/icons/drkblue/info.png</file>
         <file alias="address-book">res/icons/drkblue/address-book.png</file>
+        <file alias="address-book-white">res/icons/drkblue/address-book-white.png</file>
         <file alias="quit">res/icons/drkblue/quit.png</file>
         <file alias="send">res/icons/drkblue/send.png</file>
         <file alias="connect_0">res/icons/drkblue/connect0_16.png</file>
@@ -30,6 +33,7 @@
         <file alias="editcopy">res/icons/drkblue/editcopy.png</file>
         <file alias="add">res/icons/drkblue/add.png</file>
         <file alias="edit">res/icons/drkblue/edit.png</file>
+        <file alias="edit2">res/icons/drkblue/edit2.png</file>
         <file alias="history">res/icons/drkblue/history.png</file>
         <file alias="masternodes">res/icons/drkblue/masternodes.png</file>
         <file alias="overview">res/icons/drkblue/overview.png</file>
