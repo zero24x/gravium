@@ -175,6 +175,8 @@ public:
                         //   (the tx=... number in the SetBestChain debug.log lines)
             5000        // * estimated number of transactions per day after checkpoint
         };
+
+        developmentAddress = "GdevnUgzrHYxCq6SN2MNnGskeTMbswfATG";
     }
 };
 static CMainParams mainParams;

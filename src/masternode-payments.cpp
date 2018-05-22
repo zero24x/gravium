@@ -131,6 +131,19 @@ bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockRewar
 
 bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward)
 {
+    bool foundDevelopmentPayment = false;
+
+    CBitcoinAddress budgetAddress(Params().DevelopmentAddress());
+
+    for (int i = 0; i < txNew.vout.size(); i++) {
+        if (txNew.vout[i].scriptPubKey == GetScriptForDestination(budgetAddress.Get()) &&
+            txNew.vout[i].nValue == GetBlockSubsidy(nBlockHeight, Params().GetConsensus())) {
+            foundDevelopmentPayment = true;
+        }
+    }
+
+    if (!foundDevelopmentPayment) return false;
+
     if(!masternodeSync.IsSynced()) {
         //there is no budget data to use to check anything, let's just accept the longest chain
         if(fDebug) LogPrintf("IsBlockPayeeValid -- WARNING: Client not synced, skipping block payee checks\n");
@@ -174,7 +187,7 @@ bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount bloc
     // superblocks started
     // SEE IF THIS IS A VALID SUPERBLOCK
 
-    if(sporkManager.IsSporkActive(SPORK_9_SUPERBLOCKS_ENABLED)) {
+    if(sporkManager.IsSporkActive(SPORK_9_SUPERBLOCKS_ENABLED) && false) { // disable superblocks
         if(CSuperblockManager::IsSuperblockTriggered(nBlockHeight)) {
             if(CSuperblockManager::IsValid(txNew, nBlockHeight, blockReward)) {
                 LogPrint("gobject", "IsBlockPayeeValid -- Valid superblock at height %d: %s", nBlockHeight, txNew.ToString());
@@ -212,11 +225,27 @@ void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blo
     // only create superblocks if spork is enabled AND if superblock is actually triggered
     // (height should be validated inside)
     if(sporkManager.IsSporkActive(SPORK_9_SUPERBLOCKS_ENABLED) &&
-        CSuperblockManager::IsSuperblockTriggered(nBlockHeight)) {
+        CSuperblockManager::IsSuperblockTriggered(nBlockHeight) && false) {
             LogPrint("gobject", "FillBlockPayments -- triggered superblock creation at height %d\n", nBlockHeight);
             CSuperblockManager::CreateSuperblock(txNew, nBlockHeight, voutSuperblockRet);
             return;
     }
+
+     // make sure it's not filled yet
+    CTxOut txoutBudget = CTxOut();
+
+    CBitcoinAddress address(Params().DevelopmentAddress()); // dev address
+
+    CScript payee = GetScriptForDestination(address.Get());
+
+    CAmount budgetPayment = 0.005 * GetBlockSubsidy(nBlockHeight, Params().GetConsensus());
+
+    // split reward between miner ...
+    txNew.vout[0].nValue -= budgetPayment;
+    // ... and masternode
+    txoutBudget = CTxOut(budgetPayment, payee);
+
+    txNew.vout.push_back(txoutBudget);
 
     // FILL BLOCK PAYEE WITH MASTERNODE PAYMENT OTHERWISE
     mnpayments.FillBlockPayee(txNew, nBlockHeight, blockReward, txoutMasternodeRet);
