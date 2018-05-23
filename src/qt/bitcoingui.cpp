@@ -403,7 +403,7 @@ void BitcoinGUI::createActions()
     verifyMessageAction = new QAction(QIcon(":/icons/" + theme + "/transaction_0"), tr("&Verify message..."), this);
     verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Gravium addresses"));
 
-    openInfoAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Information"), this);
+    openInfoAction = new QAction(QIcon(":/icons/" + theme + "/info"), tr("&Information"), this);
     openInfoAction->setStatusTip(tr("Show diagnostic information"));
     openRPCConsoleAction = new QAction(QIcon(":/icons/" + theme + "/debugwindow"), tr("&Debug console"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging console"));
@@ -426,19 +426,19 @@ void BitcoinGUI::createActions()
     openPeersAction->setEnabled(false);
     openRepairAction->setEnabled(false);
 
-    usedSendingAddressesAction = new QAction(QIcon(":/icons/" + theme + "/address-book"), tr("&Sending addresses..."), this);
+    usedSendingAddressesAction = new QAction(QIcon(":/icons/" + theme + "/address-book-white"), tr("&Sending addresses..."), this);
     usedSendingAddressesAction->setStatusTip(tr("Show the list of used sending addresses and labels"));
-    usedReceivingAddressesAction = new QAction(QIcon(":/icons/" + theme + "/address-book"), tr("&Receiving addresses..."), this);
+    usedReceivingAddressesAction = new QAction(QIcon(":/icons/" + theme + "/address-book-white"), tr("&Receiving addresses..."), this);
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
-    openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon), tr("Open &URI..."), this);
+    openAction = new QAction(QIcon(":/icons/" + theme + "/folder-icon"), tr("Open &URI..."), this);
     openAction->setStatusTip(tr("Open a gravium: URI or payment request"));
 
-    showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
+    showHelpMessageAction = new QAction(QIcon(":/icons/" + theme + "/info"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
     showHelpMessageAction->setStatusTip(tr("Show the Gravium Core help message to get a list with possible Gravium Core command-line options"));
 
-    showPrivateSendHelpAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&PrivateSend information"), this);
+    showPrivateSendHelpAction = new QAction(QIcon(":/icons/" + theme + "/info"), tr("&PrivateSend information"), this);
     showPrivateSendHelpAction->setMenuRole(QAction::NoRole);
     showPrivateSendHelpAction->setStatusTip(tr("Show the PrivateSend basic information"));
 
@@ -1476,7 +1476,7 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-    setStyleSheet(QString("QLabel { color : %1 }").arg(platformStyle->SingleColor().name()));
+    setStyleSheet(QString("QLabel { color : #fff }").arg(platformStyle->SingleColor().name()));
 }
 
 /** So that it responds to button clicks */

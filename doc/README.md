@@ -1,7 +1,7 @@
 Gravium Core 0.12.1
 =====================
 
-This is the official reference wallet for Gravium digital currency and comprises the backbone of the Gravium peer-to-peer network. You can [download Gravium Core](https://www.gravium.org/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for Gravium digital currency and comprises the backbone of the Gravium peer-to-peer network. You can [download Gravium Core](https://www.gravium.io/downloads/) or [build it yourself](#building) using the guides below.
 
 Running
 ---------------------

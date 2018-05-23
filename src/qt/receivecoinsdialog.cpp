@@ -40,7 +40,7 @@ ReceiveCoinsDialog::ReceiveCoinsDialog(const PlatformStyle *platformStyle, QWidg
     } else {
         ui->clearButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
         ui->receiveButton->setIcon(QIcon(":/icons/" + theme + "/receiving_addresses"));
-        ui->showRequestButton->setIcon(QIcon(":/icons/" + theme + "/edit"));
+        ui->showRequestButton->setIcon(QIcon(":/icons/" + theme + "/edit2"));
         ui->removeRequestButton->setIcon(QIcon(":/icons/" + theme + "/remove"));
     }
 

@@ -92,10 +92,8 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     }
     
     /* Theme selector */
-    ui->theme->addItem(QString("GRAVIUM-light"), QVariant("light"));
-    ui->theme->addItem(QString("GRAVIUM-light-hires"), QVariant("light-hires"));
-    ui->theme->addItem(QString("GRAVIUM-blue"), QVariant("drkblue"));
-    ui->theme->addItem(QString("GRAVIUM-Crownium"), QVariant("crownium"));
+    ui->theme->addItem(QString("GRAVIUM-dark"), QVariant("gravium-dark"));
+    ui->theme->addItem(QString("GRAVIUM-original"), QVariant("drkblue"));
     ui->theme->addItem(QString("GRAVIUM-traditional"), QVariant("trad"));
     
     /* Language selector */

@@ -76,7 +76,7 @@
         <bool>false</bool>
        </property>
        <property name="pixmap">
-        <pixmap resource="../gravium.qrc">:/images/drkblue/about</pixmap>
+        <pixmap resource="../gravium.qrc">:/images/gravium-dark/about</pixmap>
        </property>
        <property name="scaledContents">
         <bool>false</bool>
