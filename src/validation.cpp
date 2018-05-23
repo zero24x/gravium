@@ -1235,11 +1235,11 @@ CAmount GetBlockSubsidy(int nPrevHeight, const Consensus::Params& consensusParam
 
     // lets keep it simple so we dont end up with gravium..
     if (nPrevHeight == 0) {
-       nSubsidy = 283824 * COIN;     // 1.5% premine
-       return nSubsidy;
+       return 283824 * COIN; // 1.5% premine
     } else if (nPrevHeight == 1) {
-       nSubsidy = 2000000 * COIN;    // 2mil for desire swap
-       return nSubsidy;
+       return 2000000 * COIN; // 2mil for desire swap
+    } else if (nPrevHeight < 20159) {
+        return 1 * COIN;
     }
 
     // otherwise, business as normal..
@@ -1255,9 +1255,11 @@ CAmount GetBlockSubsidy(int nPrevHeight, const Consensus::Params& consensusParam
 
 CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
-    CAmount ret = blockValue*.5475; // start at 20%
-
-    return ret;
+    if (nHeight >= 20160) {
+        return blockValue*.5475;
+    } else {
+        return 0;
+    }
 }
 
 bool IsInitialBlockDownload()

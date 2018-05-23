@@ -54,7 +54,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Gravium MAINNET 29042018 - 1429B9041656F9E0255E66F2AA380F5BEF56FA75E63DF24FE4159A15DA35D8FB";
+    const char* pszTimestamp = "Gravium MAINNET - A751AF6552810E2E3C105DC7A95B8C8DD9E4BFC2C0CA9DC32D92D1EE6562762B";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -139,13 +139,17 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1524940000, 545504, 0x1e0ffff0, 1 << 28, 0 * COIN);
+        genesis = CreateGenesisBlock(1524940000, 427444, 0x1e0ffff0, 1 << 28, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("0x0000057ba8da1da1e9e83128ada30f99d1135b58c57b7c0f8188155b6fb04969"));
-        assert(genesis.hashMerkleRoot == uint256S("0xd68170816e7600b88888c7b5f4b44e3bdb8b4455ed8e67167597216eefe42517"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000008876cc4a4550d368ec40f7a1e8a17b665f422be9c53266b51ca3ab8b1d1"));
+        assert(genesis.hashMerkleRoot == uint256S("0x3da78f5a16c205c89742a90b285a5eee16058e1157092f687e070e28862dac04"));
 
-        //vSeeds.push_back(CDNSSeedData("", ""));
+        vFixedSeeds.clear();
+        vSeeds.clear();
+        vSeeds.push_back(CDNSSeedData("eu1", "dnsseed_eu1.gravium.io"));
+        vSeeds.push_back(CDNSSeedData("eu2", "dnsseed_eu2.gravium.io"));
+        vSeeds.push_back(CDNSSeedData("au1", "dnsseed_au1.gravium.io"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 38); // G
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 97); // g

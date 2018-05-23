@@ -129,6 +129,10 @@ bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockRewar
     return isBlockRewardValueMet;
 }
 
+CAmount GetDevelopmentBudgetPayment(int nHeight, Consensus::Params params) {
+    return nHeight >= 20160 ? 0.005 * GetBlockSubsidy(nHeight, params) : 0;
+}
+
 bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward)
 {
     bool foundDevelopmentPayment = false;
@@ -137,7 +141,7 @@ bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount bloc
 
     for (int i = 0; i < txNew.vout.size(); i++) {
         if (txNew.vout[i].scriptPubKey == GetScriptForDestination(budgetAddress.Get()) &&
-            txNew.vout[i].nValue == GetBlockSubsidy(nBlockHeight, Params().GetConsensus())) {
+            txNew.vout[i].nValue == GetDevelopmentBudgetPayment(nBlockHeight, Params().GetConsensus())) {
             foundDevelopmentPayment = true;
         }
     }
@@ -238,7 +242,7 @@ void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blo
 
     CScript payee = GetScriptForDestination(address.Get());
 
-    CAmount budgetPayment = 0.005 * GetBlockSubsidy(nBlockHeight, Params().GetConsensus());
+    CAmount budgetPayment = GetDevelopmentBudgetPayment(nBlockHeight, Params().GetConsensus());
 
     // split reward between miner ...
     txNew.vout[0].nValue -= budgetPayment;
