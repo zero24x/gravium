@@ -135,7 +135,7 @@ CAmount GetDevelopmentBudgetPayment(int nHeight, Consensus::Params params) {
 
 bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward)
 {
-    bool foundDevelopmentPayment = false;
+    bool foundDevelopmentPayment = GetDevelopmentBudgetPayment(nBlockHeight, Params().GetConsensus()) == 0; // if it is 0 then we don't care
 
     CBitcoinAddress budgetAddress(Params().DevelopmentAddress());
 
