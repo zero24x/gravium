@@ -40,7 +40,7 @@ NOTE: Building with Qt4 is still supported, however, doing so could result in a 
 
 1. Clone the GitHub tree to get the source code and go into the directory.
 
-        git clone https://github.com/graviumpay/gravium.git
+        git clone https://github.com/gravium/gravium.git
         cd gravium
 
 2.  Build Gravium Core:
