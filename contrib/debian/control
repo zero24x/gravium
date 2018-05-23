@@ -25,8 +25,8 @@ Build-Depends: debhelper,
  python
 Standards-Version: 3.9.2
 Homepage: https://www.gravium.org/
-Vcs-Git: git://github.com/graviumpay/gravium.git
-Vcs-Browser: https://github.com/graviumpay/gravium
+Vcs-Git: git://github.com/gravium/gravium.git
+Vcs-Browser: https://github.com/gravium/gravium
 
 Package: graviumd
 Architecture: any

@@ -3,7 +3,7 @@ Construct a linear, no-fork, best version of the blockchain.
 
 ## Step 0: Install gravium_hash
 
-https://github.com/graviumpay/gravium_hash
+https://github.com/gravium/gravium_hash
 
 ## Step 1: Download hash list
 

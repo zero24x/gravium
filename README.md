@@ -28,7 +28,7 @@ Development Process
 -------------------
 
 The `master` branch is meant to be stable. Development is normally done in separate branches.
-[Tags](https://github.com/graviumpay/gravium/tags) are created to indicate new official,
+[Tags](https://github.com/gravium/gravium/tags) are created to indicate new official,
 stable release versions of Gravium Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).

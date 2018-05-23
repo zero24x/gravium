@@ -24,9 +24,9 @@ Drag Gravium-Qt to your applications folder, and then run Gravium-Qt.
 
 ### Need Help?
 
-* See the [Gravium documentation](https://graviumpay.atlassian.net/wiki/display/DOC)
+* See the [Gravium documentation](https://gravium.atlassian.net/wiki/display/DOC)
 for help and more information.
-* Ask for help on [#graviumpay](http://webchat.freenode.net?channels=graviumpay) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=graviumpay).
+* Ask for help on [#gravium](http://webchat.freenode.net?channels=gravium) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=gravium).
 * Ask for help on the [GraviumTalk](https://graviumtalk.org/) forums.
 
 Building
@@ -58,7 +58,7 @@ The Gravium Core repo's [root README](/README.md) contains relevant information 
 
 ### Resources
 * Discuss on the [GraviumTalk](https://graviumtalk.org/) forums, in the Development & Technical Discussion board.
-* Discuss on [#graviumpay](http://webchat.freenode.net/?channels=graviumpay) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=graviumpay).
+* Discuss on [#gravium](http://webchat.freenode.net/?channels=gravium) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=gravium).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
