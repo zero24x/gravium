@@ -54,7 +54,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Gravium MAINNET 29042018 - 1429B9041656F9E0255E66F2AA380F5BEF56FA75E63DF24FE4159A15DA35D8FB";
+    const char* pszTimestamp = "Gravium MAINNET - A751AF6552810E2E3C105DC7A95B8C8DD9E4BFC2C0CA9DC32D92D1EE6562762B";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -134,17 +134,16 @@ public:
         pchMessageStart[2] = 0x00;
         pchMessageStart[3] = 0xd1;
         vAlertPubKey = ParseHex("048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103");
-        nDefaultPort = 9999;
+        nDefaultPort = 11010;
         nMaxTipAge = 7 * 24 * 60 * 60;
         nDelayGetHeadersTime = 0;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1524940000, 545504, 0x1e0ffff0, 1 << 28, 0 * COIN);
+        genesis = CreateGenesisBlock(1524940000, 427444, 0x1e0ffff0, 1 << 28, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("0x0000057ba8da1da1e9e83128ada30f99d1135b58c57b7c0f8188155b6fb04969"));
-        assert(genesis.hashMerkleRoot == uint256S("0xd68170816e7600b88888c7b5f4b44e3bdb8b4455ed8e67167597216eefe42517"));
-
+        assert(consensus.hashGenesisBlock == uint256S("0x000008876cc4a4550d368ec40f7a1e8a17b665f422be9c53266b51ca3ab8b1d1"));
+        assert(genesis.hashMerkleRoot == uint256S("0x3da78f5a16c205c89742a90b285a5eee16058e1157092f687e070e28862dac04"));
         //vSeeds.push_back(CDNSSeedData("", ""));
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -180,6 +179,8 @@ public:
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0        // * estimated number of transactions per day after checkpoint
         };
+
+        developmentAddress = "GdevnUgzrHYxCq6SN2MNnGskeTMbswfATG";
     }
 };
 static CMainParams mainParams;
@@ -245,7 +246,7 @@ public:
         pchMessageStart[2] = 0xca;
         pchMessageStart[3] = 0xff;
         vAlertPubKey = ParseHex("04517d8a699cb43d3938d7b24faaff7cda448ca4ea267723ba614784de661949bf632d6304316b244646dea079735b9a6fc4af804efb4752075b9fe2245e14e412");
-        nDefaultPort = 19999;
+        nDefaultPort = 12010;
         nMaxTipAge = 0x7fffffff; // allow mining on top of old blocks for testnet
         nDelayGetHeadersTime = 0;
         nPruneAfterHeight = 1000;
