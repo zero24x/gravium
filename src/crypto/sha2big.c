@@ -201,7 +201,7 @@ sph_sha512_init(void *cc)
 #define RFUN   sha3_round
 #define HASH   sha384
 #define BE64   1
-#include "md_helper.c"
+#include "crypto/md_helper.c"
 
 /* see sph_sha3.h */
 void
