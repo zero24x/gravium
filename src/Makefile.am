@@ -332,6 +332,7 @@ crypto_libbitcoin_crypto_a_SOURCES += \
   crypto/x16r.c \
   crypto/x16r.h \
   crypto/sha2big.c \
+  crypto/md_helper.c \
   crypto/sph_blake.h \
   crypto/sph_bmw.h \
   crypto/sph_cubehash.h \
