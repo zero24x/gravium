@@ -1,3 +1,6 @@
+/****************************************************************************************/
+/*************** [COLOR CODES] DARK GREEN:#02AF92 LIGHT GREEN:#00D1B2 *****************/
+/****************************************************************************************/
 WalletFrame {
   background-color: #404041;
   margin:0;
@@ -19,22 +22,20 @@ WalletFrame {
   }
   
   QMenuBar {
-  background-color:#02AF92;
-  color: #404041;
+  background-color:#fff;
   }
   
   QMenuBar::item {
-  background-color:#02AF92;
-  color: #404041;
+  background-color:#fff;
+  color: #333;
   }
   
   QMenuBar::item:selected {
-  background-color:#00D1B2;
-  color: #404041;
+  background-color:#f8f6f6;
   }
   
   QMenu {
-  background-color:#02AF92;
+  background-color:#f8f6f6;
   }
   
   QMenu::item {
