@@ -189,11 +189,11 @@ then
 fi
 
 # Check for OSX SDK
-if [[ ! -e "gitian-builder/inputs/MacOSX10.9.sdk.tar.gz" && $osx == true ]]
-then
-    echo "Cannot build for OSX, SDK does not exist. Will build for other OSes"
-    osx=false
-fi
+#if [[ ! -e "gitian-builder/inputs/MacOSX10.9.sdk.tar.gz" && $osx == true ]]
+#then
+#    echo "Cannot build for OSX, SDK does not exist. Will build for other OSes"
+#    osx=false
+#fi
 
 # Get signer
 if [[ -n "$1" ]]
