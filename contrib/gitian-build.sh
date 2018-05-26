@@ -281,7 +281,7 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit gravium=${COMMIT} --url gravium=${url} ../gravium/contrib/gitian-descriptors/gitian-linux.yml
 	    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../gravium/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/gravium-*.tar.gz build/out/src/gravium-*.tar.gz ../gravium-binaries/${VERSION}
+	    mv build/out/graviumcore-*.tar.gz build/out/src/gravium-*.tar.gz ../gravium-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -291,8 +291,8 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit gravium=${COMMIT} --url gravium=${url} ../gravium/contrib/gitian-descriptors/gitian-win.yml
 	    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../gravium/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/gravium-*-win-unsigned.tar.gz inputs/gravium-win-unsigned.tar.gz
-	    mv build/out/gravium-*.zip build/out/gravium-*.exe ../gravium-binaries/${VERSION}
+	    mv build/out/graviumcore-*-win-unsigned.tar.gz inputs/gravium-win-unsigned.tar.gz
+	    mv build/out/graviumcore-*.zip build/out/gravium-*.exe ../gravium-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -302,8 +302,8 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit gravium=${COMMIT} --url gravium=${url} ../gravium/contrib/gitian-descriptors/gitian-osx.yml
 	    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../gravium/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/gravium-*-osx-unsigned.tar.gz inputs/gravium-osx-unsigned.tar.gz
-	    mv build/out/gravium-*.tar.gz build/out/gravium-*.dmg ../gravium-binaries/${VERSION}
+	    mv build/out/graviumcore-*-osx-unsigned.tar.gz inputs/gravium-osx-unsigned.tar.gz
+	    mv build/out/graviumcore-*.tar.gz build/out/gravium-*.dmg ../gravium-binaries/${VERSION}
 	fi
 	# AArch64
 	if [[ $aarch64 = true ]]
@@ -313,7 +313,7 @@ then
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit gravium=${COMMIT} --url gravium=${url} ../gravium/contrib/gitian-descriptors/gitian-aarch64.yml
 	    ./bin/gsign --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../gravium/contrib/gitian-descriptors/gitian-aarch64.yml
-	    mv build/out/gravium-*.tar.gz build/out/src/gravium-*.tar.gz ../gravium-binaries/${VERSION}
+	    mv build/out/graviumcore-*.tar.gz build/out/src/gravium-*.tar.gz ../gravium-binaries/${VERSION}
 	fi
 	popd || exit
 
@@ -383,8 +383,8 @@ then
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../gravium/contrib/gitian-descriptors/gitian-win-signer.yml
 	    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../gravium/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/gravium-*win64-setup.exe ../gravium-binaries/${VERSION}
-	    mv build/out/gravium-*win32-setup.exe ../gravium-binaries/${VERSION}
+	    mv build/out/graviumcore-*win64-setup.exe ../gravium-binaries/${VERSION}
+	    mv build/out/graviumcore-*win32-setup.exe ../gravium-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -394,7 +394,7 @@ then
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../gravium/contrib/gitian-descriptors/gitian-osx-signer.yml
 	    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../gravium/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/gravium-osx-signed.dmg ../gravium-binaries/${VERSION}/gravium-${VERSION}-osx.dmg
+	    mv build/out/graviumcore-osx-signed.dmg ../gravium-binaries/${VERSION}/graviumcore-${VERSION}-osx.dmg
 	fi
 	popd || exit
 
