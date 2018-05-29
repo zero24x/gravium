@@ -1,5 +1,5 @@
 ---
-name: "gravium-linux-0.12"
+name: "gravium-linux-1.0.1"
 enable_cache: true
 suites:
 - "trusty"
