@@ -1,5 +1,5 @@
 ---
-name: "gravium-win-0.12"
+name: "gravium-win-1.0.1"
 enable_cache: true
 suites:
 - "trusty"
