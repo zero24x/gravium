@@ -1485,7 +1485,28 @@ QHBoxLayout#horizontalLayout_note {
   background-color:#404041;
   color:#e6e6e6;
   }
+  QGridLayout#gridLayout_2 {
+  background-color:#333335;
+  color:#e6e6e6;  
+}
+
+  QVBoxLayout#verticalLayout_2 {
+  background-color:#333335;
+  color:#e6e6e6;
+}
+  QHBoxLayout#horizontalLayout_note {
+  background-color:#333335;
+  color:#e6e6e6;    
+}
+
+  QLabel#updateNote {
+  background-color:#333335;
+  color:#e6e6e6;    
+}
   
+
+
+
   QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch:checked { /* Coin Control Branch Icon */
   background-image: url(':/images/gravium-dark/drkblue_qtreeview_selected');
   background-repeat:no-repeat;
@@ -1502,6 +1523,9 @@ QHBoxLayout#horizontalLayout_note {
   
   }
   
+
+
+
   /* RECEIVE COINS */
   
   QWidget#ReceiveCoinsDialog .QFrame#frame2 .QLabel#label_2 { /* Label Label */
