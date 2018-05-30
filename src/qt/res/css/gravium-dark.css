@@ -1292,6 +1292,11 @@ WalletFrame {
   padding-left:10px;
   }
   
+QHBoxLayout#horizontalLayout_note {
+  background-color:#333335;
+  color:#e6e6e6;
+}
+
   /* SEND COINS ENTRY */
   
   QStackedWidget#SendCoinsEntry .QFrame#SendCoins > .QLabel { /* Send Coin Entry Labels */
