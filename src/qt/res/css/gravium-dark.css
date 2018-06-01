@@ -1727,3 +1727,8 @@ QHBoxLayout#horizontalLayout_note {
     a {
       color: #00D1B2;
     }
+
+.QTabWidget QWidget  {
+    background-color:#333335;
+    color:#e6e6e6;
+}
