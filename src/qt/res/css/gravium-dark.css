@@ -1736,3 +1736,29 @@ QHBoxLayout#horizontalLayout_note {
     QTabWidget::pane { 
       border: 0; 
     }
+
+    QWidget#tabMyMasternodes QPushButton { /* Global Button Style */
+      background-color: #00D1B2;
+      border:0;
+      border-radius:3px;
+      color:#404041;
+      font-size:12px;
+      font-weight:bold;
+      padding-left:25px;
+      padding-right:25px;
+      padding-top:5px;
+      padding-bottom:5px;
+      }
+      
+      QWidget#tabMyMasternodes  QPushButton:hover {
+      background-color:#00D1B2;
+      }
+      
+      QWidget#tabMyMasternodes QPushButton:focus {
+      border:none;
+      outline:none;
+      }
+      
+      QWidget#tabMyMasternodes QPushButton:pressed {
+      border:1px solid #e6e6e6;
+      }
