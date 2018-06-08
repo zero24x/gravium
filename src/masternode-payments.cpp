@@ -130,7 +130,7 @@ bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockRewar
 }
 
 CAmount GetDevelopmentBudgetPayment(int nHeight, Consensus::Params params) {
-    return nHeight >= 2 ? 0.005 * GetBlockSubsidy(nHeight, params) : 0;
+    return nHeight >= 20160 ? 0.005 * GetBlockSubsidy(nHeight, params) : 0;
 }
 
 bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward)
