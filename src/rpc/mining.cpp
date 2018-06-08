@@ -741,8 +741,8 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
         }
     }
     result.push_back(Pair("superblock", superblockObjArray));
-    result.push_back(Pair("superblocks_started", pindexPrev->nHeight + 1 > Params().GetConsensus().nSuperblockStartBlock));
-    result.push_back(Pair("superblocks_enabled", sporkManager.IsSporkActive(SPORK_9_SUPERBLOCKS_ENABLED)));
+    result.push_back(Pair("superblocks_started", true));
+    result.push_back(Pair("superblocks_enabled", true));
 
     return result;
 }
