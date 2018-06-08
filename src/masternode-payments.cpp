@@ -130,7 +130,7 @@ bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockRewar
 }
 
 CAmount GetDevelopmentBudgetPayment(int nHeight, Consensus::Params params) {
-    return nHeight >= 20160 ? 0.005 * GetBlockSubsidy(nHeight, params) : 0;
+    return nHeight >= 2 ? 0.005 * GetBlockSubsidy(nHeight, params) : 0;
 }
 
 bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward)
@@ -159,7 +159,7 @@ bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount bloc
 
     const Consensus::Params& consensusParams = Params().GetConsensus();
 
-    if(nBlockHeight < consensusParams.nSuperblockStartBlock) {
+    if(nBlockHeight < consensusParams.nSuperblockStartBlock && false) {
         if(mnpayments.IsTransactionValid(txNew, nBlockHeight)) {
             LogPrint("mnpayments", "IsBlockPayeeValid -- Valid masternode payment at height %d: %s", nBlockHeight, txNew.ToString());
             return true;
@@ -250,6 +250,8 @@ void FillBlockPayments(CMutableTransaction& txNew, int nBlockHeight, CAmount blo
     txoutBudget = CTxOut(budgetPayment, payee);
 
     txNew.vout.push_back(txoutBudget);
+
+    voutSuperblockRet.push_back(txoutBudget);
 
     // FILL BLOCK PAYEE WITH MASTERNODE PAYMENT OTHERWISE
     mnpayments.FillBlockPayee(txNew, nBlockHeight, blockReward, txoutMasternodeRet);
