@@ -1,4 +1,4 @@
-Gravium Core staging tree 0.12.2
+Gravium Core staging tree 1.0.2.1
 ===============================
 
 `master:` [![Build Status](https://travis-ci.org/Gravium/gravium.svg?branch=master)](https://travis-ci.org/Gravium/gravium)
