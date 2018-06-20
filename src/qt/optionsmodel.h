@@ -54,6 +54,7 @@ public:
         PrivateSendAmount,      // int
         PrivateSendMultiSession,// bool
         Listen,                 // bool
+        CheckForUpdates,        // bool
         OptionIDRowCount,
     };
 

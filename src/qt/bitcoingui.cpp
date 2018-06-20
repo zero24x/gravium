@@ -7,6 +7,7 @@
 
 #include "bitcoinunits.h"
 #include "clientmodel.h"
+#include "graviumupdate.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "modaloverlay.h"
@@ -22,6 +23,7 @@
 #ifdef ENABLE_WALLET
 #include "walletframe.h"
 #include "walletmodel.h"
+#include "wallet/wallet.h"
 #endif // ENABLE_WALLET
 
 #ifdef Q_OS_MAC
@@ -80,6 +82,7 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     clientModel(0),
     walletFrame(0),
     unitDisplayControl(0),
+    graviumUpdate(0),
     labelEncryptionIcon(0),
     labelWalletHDStatusIcon(0),
     labelConnectionsIcon(0),
@@ -255,6 +258,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *n
     connect(labelConnectionsIcon, SIGNAL(clicked(QPoint)), this, SLOT(showPeers()));
 
     modalOverlay = new ModalOverlay(this->centralWidget());
+
+    graviumUpdate = new GraviumUpdate(this);
+
 #ifdef ENABLE_WALLET
     if(enableWallet) {
         connect(walletFrame, SIGNAL(requestedSyncWarningInfo()), this, SLOT(showModalOverlay()));
@@ -1082,9 +1088,13 @@ void BitcoinGUI::setAdditionalDataSyncProgress(double nSyncProgress)
     tooltip = tr("Up to date") + QString(".<br>") + tooltip;
 
     if(masternodeSync.IsSynced()) {
+
+      if(!fCheckForUpdates) {
         progressBarLabel->setVisible(false);
         progressBar->setVisible(false);
         labelBlocksIcon->setPixmap(QIcon(":/icons/" + theme + "/synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+      }
+
     } else {
 
         labelBlocksIcon->setPixmap(platformStyle->SingleColorIcon(QString(
@@ -1104,6 +1114,13 @@ void BitcoinGUI::setAdditionalDataSyncProgress(double nSyncProgress)
 
     strSyncStatus = QString(masternodeSync.GetSyncStatus().c_str());
     progressBarLabel->setText(strSyncStatus);
+
+    if(masternodeSync.IsSynced() && fCheckForUpdates) {
+       progressBar->setVisible(false);
+       QString link = QString("<a href=%1>here</a>").arg(GRV_RELEASES);
+       progressBarLabel->setText(tr("New version of Gravium wallet is available (%1)").arg(link));
+    }
+
     tooltip = strSyncStatus + QString("<br>") + tooltip;
 
     // Don't word-wrap this (fixed-width) tooltip

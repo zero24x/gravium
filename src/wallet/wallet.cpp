@@ -47,6 +47,7 @@ CAmount maxTxFee = DEFAULT_TRANSACTION_MAXFEE;
 unsigned int nTxConfirmTarget = DEFAULT_TX_CONFIRM_TARGET;
 bool bSpendZeroConfChange = DEFAULT_SPEND_ZEROCONF_CHANGE;
 bool fSendFreeTransactions = DEFAULT_SEND_FREE_TRANSACTIONS;
+bool fCheckForUpdates = DEFAULT_CHECK_FOR_UPDATES;
 
 /**
  * Fees smaller than this (in guffs) are considered zero fee (for transaction creation)

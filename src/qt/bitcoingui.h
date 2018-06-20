@@ -20,6 +20,7 @@
 #include <QSystemTrayIcon>
 
 class ClientModel;
+class GraviumUpdate;
 class NetworkStyle;
 class Notificator;
 class OptionsModel;
@@ -127,6 +128,7 @@ private:
     QAction *showHelpMessageAction;
     QAction *showPrivateSendHelpAction;
 
+    GraviumUpdate *graviumUpdate;
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
     QMenu *dockIconMenu;
