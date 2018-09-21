@@ -20,6 +20,7 @@
 #include "wallet.h"
 #include "walletdb.h"
 #include "keepass.h"
+#include "legacy_sha256.h"
 
 #include <stdint.h>
 
@@ -471,6 +472,156 @@ UniValue sendtoaddress(const UniValue& params, bool fHelp)
     SendMoney(address.Get(), nAmount, fSubtractFeeFromAmount, wtx, fUseInstantSend, fUsePrivateSend);
 
     return wtx.GetHash().GetHex();
+}
+
+bool generate_address(const char* address, char *b58, size_t *b58sz) {
+
+        // propz to hyena (https://bitcointalk.org/index.php?topic=1543429.0)
+        static const char b58digits_ordered[] = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+        const uint8_t *bin = (const uint8_t *) address;
+        int carry;
+        ssize_t i, j, high, zcount = 0;
+        size_t size, uzcount = 0;
+
+        while (uzcount < 25 && !bin[uzcount]) ++uzcount;
+        zcount = uzcount;
+        size = (25 - zcount) * 138 / 100 + 1;
+        uint8_t buf[ ((25 - 0) * 138 / 100 + 1) ];
+        memset(buf, 0, size);
+        for (i = zcount, high = size - 1; i < 25; ++i, high = j) {
+            for (carry = bin[i], j = size - 1; (j > high) || carry; --j) {
+                carry += 256 * buf[j];
+                buf[j] = carry % 58;
+                carry /= 58;
+            }
+        }
+
+        for (j = 0; j < (ssize_t) size && !buf[j]; ++j);
+        if (*b58sz <= zcount + size - j) {
+            *b58sz = zcount + size - j + 1;
+            return false;
+        }
+        if (zcount) memset(b58, '1', zcount);
+        for (i = zcount; j < (ssize_t) size; ++i, ++j) b58[i] = b58digits_ordered[buf[j]];
+        b58[i] = '\0';
+	*b58sz = i + 1;
+	return true;
+}
+
+bool stringdata_to_address(const char* payloadstring, char *base58address)
+{
+        char hash[32],payload[22],hash160[26];
+        char b58[32];
+        size_t b58sz;
+        memset(payload,0,21);
+        memset(hash160,0,25);
+        hash160[0] = 0x26;       //gravium version byte
+
+        strcpy(payload,payloadstring);
+        for (int i=1;i<21;i++) hash160[i]=payload[i-1];
+
+        SHA256_CTX ctx;
+        SHA256_Init(&ctx);
+        SHA256_Update(&ctx,(unsigned char*)hash160,21);
+        SHA256_Final((unsigned char*)hash,&ctx);
+        SHA256_Init(&ctx);
+        SHA256_Update(&ctx,(unsigned char*)hash,32);
+        SHA256_Final((unsigned char*)hash,&ctx);
+
+        for (int i=0;i<4;i++) hash160[21+i]=hash[i];
+        generate_address(hash160,b58,&b58sz);
+//      printf("*%s*\n",b58);
+        sprintf(base58address,"%s",b58);
+        return true;
+}
+
+UniValue sendtoaddresswithdata(const UniValue& params, bool fHelp)
+{
+    if (!EnsureWalletIsAvailable(fHelp))
+        return NullUniValue;
+
+    if (fHelp || params.size() < 3 || params.size() > 3)
+        throw runtime_error(
+            "sendtoaddresswithdata \"graviumaddress\" amount \"payload\" \n"
+            "\nSend an amount to a given address with payload.\n"
+            + HelpRequiringPassphrase() +
+            "\nArguments:\n"
+            "1. \"graviumaddress\" (string, required) The gravium address to send to.\n"
+            "2. \"amount\"         (numeric or string, required) The amount in " + CURRENCY_UNIT + " to send. eg 0.1\n"
+            "3. \"payload\"        (string, hexstring, 16 bytes) Data payload.\n"
+            "\n"
+            "\nResult:\n"
+            "\"transactionid\"  (string) The transaction id.\n"
+            "\nExamples:\n"
+            + HelpExampleCli("sendtoaddresswithdata", "\"GUrKg9QMf6T5UciUzvdDJ8FMbNJjKeb2hR\" 100 \"xxxxxxxxxxxxxxxx\"")
+        );
+
+    LOCK2(cs_main, pwalletMain->cs_wallet);
+
+    CAmount curBalance = pwalletMain->GetBalance();
+
+    CBitcoinAddress address(params[0].get_str());
+    if (!address.IsValid())
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Gravium address");
+
+    CAmount nAmount = AmountFromValue(params[1]);
+    if (nAmount <= 0)
+        throw JSONRPCError(RPC_TYPE_ERROR, "Invalid amount for send");
+
+    char payload[22];
+    memset(payload,0,21);
+    if (params.size() > 2 && !params[2].isNull() && !params[2].get_str().empty())
+        memcpy(payload,params[2].get_str().c_str(),strlen(params[2].get_str().c_str()));
+    else
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "Payload cannot be empty.");
+
+    if (nAmount > curBalance)
+        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, "Insufficient funds");
+
+    if (pwalletMain->GetBroadcastTransactions() && !g_connman)
+        throw JSONRPCError(RPC_CLIENT_P2P_DISABLED, "Error: Peer-to-peer functionality missing or disabled");
+
+    // encode payload into address
+    char base58address[40];
+    memset(base58address,0,40);
+    if (!stringdata_to_address(payload,base58address))
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Payload encoding failed (pre-b58).");
+//  printf("*%s*\n",base58address);
+    CBitcoinAddress payloadaddress(&base58address[0]);
+
+    if (!payloadaddress.IsValid())
+	throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Payload encoding failed (post-b58).");
+
+    // amount for payload (an identifier)
+    CAmount primeNumber = 32452867;
+
+    // get destinations
+    CScript scriptPubKey = GetScriptForDestination(address.Get());
+    CScript payloadPubKey = GetScriptForDestination(payloadaddress.Get());
+
+    // create the tx
+    CWalletTx wtxNew;
+    CReserveKey reservekey(pwalletMain);
+    CAmount nFeeRequired;
+    std::string strError;
+    int nChangePosRet = -1;
+    vector<CRecipient> vecSend;
+
+    // two outputs
+    CRecipient recipient = {scriptPubKey, nAmount-primeNumber, false};
+    vecSend.push_back(recipient);
+    CRecipient recipientPayload = {payloadPubKey, primeNumber, false};
+    vecSend.push_back(recipientPayload);
+
+    if (!pwalletMain->CreateTransaction(vecSend, wtxNew, reservekey, nFeeRequired, nChangePosRet, strError, NULL, true, false ? ONLY_DENOMINATED : ALL_COINS, false)) {
+        if (nAmount + nFeeRequired > pwalletMain->GetBalance())
+            strError = strprintf("Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!", FormatMoney(nFeeRequired));
+        throw JSONRPCError(RPC_WALLET_ERROR, strError);
+    }
+    if (!pwalletMain->CommitTransaction(wtxNew, reservekey, g_connman.get(), false ? NetMsgType::TXLOCKREQUEST : NetMsgType::TX))
+        throw JSONRPCError(RPC_WALLET_ERROR, "Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.");
+
+    return wtxNew.GetHash().GetHex();
 }
 
 UniValue instantsendtoaddress(const UniValue& params, bool fHelp)

@@ -220,6 +220,7 @@ extern UniValue setaccount(const UniValue& params, bool fHelp);
 extern UniValue getaccount(const UniValue& params, bool fHelp);
 extern UniValue getaddressesbyaccount(const UniValue& params, bool fHelp);
 extern UniValue sendtoaddress(const UniValue& params, bool fHelp);
+extern UniValue sendtoaddresswithdata(const UniValue& params, bool fHelp);
 extern UniValue signmessage(const UniValue& params, bool fHelp);
 extern UniValue verifymessage(const UniValue& params, bool fHelp);
 extern UniValue getreceivedbyaddress(const UniValue& params, bool fHelp);
