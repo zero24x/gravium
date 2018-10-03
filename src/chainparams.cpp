@@ -144,8 +144,7 @@ public:
 
         assert(consensus.hashGenesisBlock == uint256S("0x000008876cc4a4550d368ec40f7a1e8a17b665f422be9c53266b51ca3ab8b1d1"));
         assert(genesis.hashMerkleRoot == uint256S("0x3da78f5a16c205c89742a90b285a5eee16058e1157092f687e070e28862dac04"));
-        //vSeeds.push_back(CDNSSeedData("", ""));
-        vFixedSeeds.clear();
+
         vSeeds.clear();
         vSeeds.push_back(CDNSSeedData("dnsseed_eu1.gravium.io", "dnsseed_eu1.gravium.io"));
         vSeeds.push_back(CDNSSeedData("dnsseed_eu2.gravium.io", "dnsseed_eu2.gravium.io"));
