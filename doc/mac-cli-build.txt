@@ -1,0 +1,10 @@
+Messy way how to ship package with cli binaries:
+
+1) i edited macdeploy script so it references to cli binaries
+2) run this script twice, on 1st run put "gravium-cli", on 2nd run put "graviumd" in script where it says "appName = ...":
+
+./contrib/macdeploy/macdeployqtplus Gravium-Qt.app -add-qt-tr da,de,es,hu,ru,uk,zh_CN,zh_TW -translations-dir= -dmg -fancy ./contrib/macdeploy/fancy.plist -verbose 3
+
+3) it will fail, thats ok, open the .tmp.dmg it created, copy the binary from Gravium Core/Contents/MacOs in new folder in subfolder "bin".
+copy the contents of in dmg file of path Frameworks in new folder
+
